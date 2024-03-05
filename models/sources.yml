@@ -1,0 +1,13 @@
+version: 2
+sources:
+  - name: gz_raw_data
+    tables:
+      - name: raw_gz_product
+        columns:
+          - name: product_id
+            description: primary key
+            tests:
+              - unique
+              - not_null
+      - name: raw_gz_sales
+      - name: raw_gz_ship
