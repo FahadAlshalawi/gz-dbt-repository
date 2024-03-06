@@ -4,4 +4,4 @@ date_date
 ,ROUND(SUM(impression),2) AS ads_impression
 ,ROUND(SUM(click),2) AS ads_clicks 
 FROM {{ref('int_campaigns')}}
-GROUP BY date_date
+GROUP BY date_date 
