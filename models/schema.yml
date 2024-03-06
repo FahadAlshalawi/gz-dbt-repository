@@ -1,31 +1,37 @@
 version: 2
-
-
-sources: 
+sources:
   - name: raw
     schema: gz_raw_data
+    description: greenweez raw data source
     tables:
-      - name: product
-        identifier: raw_gz_product
-        columns:
-          - name: products_id
-        tests:
-          - not_null
-          - unique
-                
-              
       - name: sales
         identifier: raw_gz_sales
+        description: sales for greenweez /we have one row per production_id found in each ordrs_id
         columns:
-        - name: date_date
+          - name: date_date
+            description: the date of purchase
+          - name: orders_id
+            description: the order id
+          - name: pdt_id
+            description: product id
         tests:
-        - unique:
-            column_name: "(orders_id || '-' || pdt_id)"
+          - unique:
+              column_name: "(pdt_id || '-' || orders_id)"
+      - name: product
+        identifier: raw_gz_product
+        description: the data of purches
+        columns:
+          - name: products_id
+            description: primary key
+            tests:
+             - unique
+             - not_null
       - name: ship
         identifier: raw_gz_ship
+        description: the data of ship
         columns:
           - name: orders_id
-        tests:
-          - unique
-          - not_null
-                  
+            description: primark key
+            tests:
+              - unique
+              - not_null
