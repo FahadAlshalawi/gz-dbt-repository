@@ -1,4 +1,3 @@
-
     select *
     from (
         SELECT 
@@ -7,10 +6,10 @@
     orders_id,
     revenue, 
     quantity, 
-    CAST(purchse_price AS FLOAT64) AS purchase_price, 
-    ROUND(s.quantity*CAST(p.purchse_price AS FLOAT64),2) AS purchase_cost,
-    s.revenue - ROUND(s.quantity*CAST(p.purchse_price AS FLOAT64),2) AS margin
+    CAST(purchase_price AS FLOAT64) AS purchase_price, 
+    ROUND(s.quantity*CAST(p.purchase_price AS FLOAT64),2) AS purchase_cost,
+    s.revenue - ROUND(s.quantity*CAST(p.purchase_price AS FLOAT64),2) AS margin
 FROM `idyllic-anvil-414008`.`dbt_fahad`.`stg_raw__sales` s
 LEFT JOIN `idyllic-anvil-414008`.`dbt_fahad`.`stg_raw__product` p 
-    ON s.pdt_id = p.products_id
+    USING (products_id)
     ) as model_limit_subq
