@@ -31,7 +31,16 @@ sources:
         description: the data of ship
         columns:
           - name: orders_id
-            description: primark key
+            description: primary key
             tests:
               - unique
               - not_null
+      - name: bing 
+        identifier: raw_gz_bing
+        description: the data of bing   
+      - name: facebook
+        identifier: raw_gz_facebook
+      - name: criteo
+        identifier: raw_gz_criteo
+      - name: adwords 
+        identifier: raw_gz_adwords
